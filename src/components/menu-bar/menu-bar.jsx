@@ -6,7 +6,6 @@ import bindAll from 'lodash.bindall';
 import React from 'react';
 
 import Box from '../box/box.jsx';
-import Button from '../button/button.jsx';
 import {ComingSoonTooltip} from '../coming-soon/coming-soon.jsx';
 import Divider from '../divider/divider.jsx';
 import LanguageSelector from '../../containers/language-selector.jsx';
@@ -32,11 +31,8 @@ import {
 
 import styles from './menu-bar.css';
 
-import helpIcon from '../../lib/assets/icon--tutorials.svg';
 import mystuffIcon from './icon--mystuff.png';
-import feedbackIcon from './icon--feedback.svg';
 import profileIcon from './icon--profile.png';
-import communityIcon from './icon--see-community.svg';
 import dropdownCaret from '../language-selector/dropdown-caret.svg';
 import languageIcon from '../language-selector/language-icon.svg';
 
@@ -154,40 +150,7 @@ class MenuBar extends React.Component {
                                 src={scratchLogo}
                             />
                         </div>
-                        <div
-                            className={classNames(styles.menuBarItem, styles.hoverable, {
-                                [styles.active]: this.props.languageMenuOpen
-                            })}
-                            onMouseUp={this.handleLanguageMouseUp}
-                        >
-                            {/* @TODO: remove coming soon tooltip wrapper  https://github.com/LLK/scratch-gui/issues/2664  */}
-                            <MenuBarItemTooltip
-                                enable
-                                id="menubar-selector"
-                                place="right"
-                            >
-                                <div
-                                    aria-label={this.props.intl.formatMessage(ariaMessages.language)}
-                                    className={classNames(styles.languageMenu)}
-                                >
-                                    <img
-                                        className={styles.languageIcon}
-                                        src={languageIcon}
-                                    />
-                                    <img
-                                        className={styles.dropdownCaret}
-                                        src={dropdownCaret}
-                                    />
-                                </div>
-                                <MenuBarMenu
-                                    open={this.props.languageMenuOpen}
-                                    onRequestClose={this.props.onRequestCloseLanguage}
-                                >
-                                    <LanguageSelector />
-                                </MenuBarMenu>
-
-                            </MenuBarItemTooltip>
-                        </div>
+                        <div />
                         <div
                             className={classNames(styles.menuBarItem, styles.hoverable, {
                                 [styles.active]: this.props.fileMenuOpen
@@ -320,18 +283,7 @@ class MenuBar extends React.Component {
                         </div>
                     </div>
                     <Divider className={classNames(styles.divider)} />
-                    <div
-                        aria-label={this.props.intl.formatMessage(ariaMessages.tutorials)}
-                        className={classNames(styles.menuBarItem, styles.hoverable)}
-                        onClick={this.props.onOpenTipLibrary}
-                    >
-                        <img
-                            className={styles.helpIcon}
-                            src={helpIcon}
-                        />
-                        <FormattedMessage {...ariaMessages.tutorials} />
-                    </div>
-                    <Divider className={classNames(styles.divider)} />
+                    <div />
                     <div className={classNames(styles.menuBarItem)}>
                         <MenuBarItemTooltip id="title-field">
                             <input
@@ -341,66 +293,10 @@ class MenuBar extends React.Component {
                             />
                         </MenuBarItemTooltip>
                     </div>
-                    <div className={classNames(styles.menuBarItem)}>
-                        <MenuBarItemTooltip id="share-button">
-                            <Button className={classNames(styles.shareButton)}>
-                                <FormattedMessage
-                                    defaultMessage="Share"
-                                    description="Label for project share button"
-                                    id="gui.menuBar.share"
-                                />
-                            </Button>
-                        </MenuBarItemTooltip>
-                    </div>
-                    <div className={classNames(styles.menuBarItem, styles.communityButtonWrapper)}>
-                        {this.props.enableCommunity ?
-                            <Button
-                                className={classNames(styles.communityButton)}
-                                iconClassName={styles.communityButtonIcon}
-                                iconSrc={communityIcon}
-                                onClick={this.props.onSeeCommunity}
-                            >
-                                <FormattedMessage
-                                    defaultMessage="See Community"
-                                    description="Label for see community button"
-                                    id="gui.menuBar.seeCommunity"
-                                />
-                            </Button> :
-                            <MenuBarItemTooltip id="community-button">
-                                <Button
-                                    className={classNames(styles.communityButton)}
-                                    iconClassName={styles.communityButtonIcon}
-                                    iconSrc={communityIcon}
-                                >
-                                    <FormattedMessage
-                                        defaultMessage="See Community"
-                                        description="Label for see community button"
-                                        id="gui.menuBar.seeCommunity"
-                                    />
-                                </Button>
-                            </MenuBarItemTooltip>
-                        }
-                    </div>
+                    <div />
+                    <div />
                 </div>
-                <div className={classNames(styles.menuBarItem, styles.feedbackButtonWrapper)}>
-                    <a
-                        className={styles.feedbackLink}
-                        href="https://scratch.mit.edu/discuss/57/"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                    >
-                        <Button
-                            className={styles.feedbackButton}
-                            iconSrc={feedbackIcon}
-                        >
-                            <FormattedMessage
-                                defaultMessage="Give Feedback"
-                                description="Label for feedback form modal button"
-                                id="gui.menuBar.giveFeedback"
-                            />
-                        </Button>
-                    </a>
-                </div>
+                <div />
                 <div className={styles.accountInfoWrapper}>
                     <MenuBarItemTooltip id="mystuff">
                         <div
@@ -432,7 +328,7 @@ class MenuBar extends React.Component {
                                 src={profileIcon}
                             />
                             <span>
-                                {'scratch-cat' /* @todo username */}
+                                {'小精灵' /* @todo username */}
                             </span>
                             <img
                                 className={styles.dropdownCaretIcon}
